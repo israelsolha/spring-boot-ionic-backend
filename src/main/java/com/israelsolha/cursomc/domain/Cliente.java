@@ -1,5 +1,6 @@
 package com.israelsolha.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.israelsolha.cursomc.domain.enums.TipoCliente;
 
@@ -25,6 +26,7 @@ public class Cliente {
     @CollectionTable(name="TELEFONE")
     private Set<String> telefones = new HashSet<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 

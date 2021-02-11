@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -65,4 +66,5 @@ public class Categoria implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

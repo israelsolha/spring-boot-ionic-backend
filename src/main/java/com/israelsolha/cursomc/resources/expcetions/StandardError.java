@@ -1,4 +1,4 @@
-package com.israelsolha.cursomc.services.exceptions;
+package com.israelsolha.cursomc.resources.expcetions;
 
 import java.io.Serializable;
 

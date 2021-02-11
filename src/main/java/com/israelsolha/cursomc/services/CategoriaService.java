@@ -2,8 +2,10 @@ package com.israelsolha.cursomc.services;
 
 import com.israelsolha.cursomc.domain.Categoria;
 import com.israelsolha.cursomc.repositories.CategoriaRepository;
+import com.israelsolha.cursomc.services.exceptions.DataIntegrityException;
 import com.israelsolha.cursomc.services.exceptions.ObjectNotFoundExceptions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,13 +22,23 @@ public class CategoriaService {
                 Categoria.class.getName()));
     }
 
-    public Categoria insert(Categoria obj){
+    public Categoria insert(Categoria obj) {
         obj.setId(null);
         return repo.save(obj);
     }
 
-    public Categoria update(Categoria obj){
+    public Categoria update(Categoria obj) {
         find(obj.getId());
         return repo.save(obj);
+    }
+
+    public void delete(Integer id) {
+        find(id);
+        try {
+            repo.deleteById(id);
+        }
+        catch (DataIntegrityViolationException e){
+            throw new DataIntegrityException("Não é possível excluir uma categoria que possui produtos");
+        }
     }
 }

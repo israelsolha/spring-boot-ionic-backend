@@ -1,8 +1,6 @@
 package com.israelsolha.cursomc.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.israelsolha.cursomc.domain.enums.TipoCliente;
 
 import javax.persistence.*;
@@ -38,7 +36,7 @@ public class Cliente {
         this.nome = nome;
         this.email = email;
         this.cpfOuCpnj = cpfOuCpnj;
-        this.tipo = tipo.getCod();
+        this.tipo = (tipo == null) ? null : tipo.getCod();
     }
 
     public Integer getId() {

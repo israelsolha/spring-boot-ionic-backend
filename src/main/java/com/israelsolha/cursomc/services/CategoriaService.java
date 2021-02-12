@@ -1,6 +1,7 @@
 package com.israelsolha.cursomc.services;
 
 import com.israelsolha.cursomc.domain.Categoria;
+import com.israelsolha.cursomc.dto.CategoriaDTO;
 import com.israelsolha.cursomc.repositories.CategoriaRepository;
 import com.israelsolha.cursomc.services.exceptions.DataIntegrityException;
 import com.israelsolha.cursomc.services.exceptions.ObjectNotFoundExceptions;
@@ -53,5 +54,9 @@ public class CategoriaService {
     public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
         PageRequest pageRequest = PageRequest.of(page,linesPerPage, Sort.Direction.valueOf(direction),orderBy);
         return repo.findAll(pageRequest);
+    }
+
+    public Categoria fromDTO(CategoriaDTO objDto){
+        return new Categoria(objDto.getId(),objDto.getNome());
     }
 }

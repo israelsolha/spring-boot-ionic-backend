@@ -1,8 +1,11 @@
 package com.israelsolha.cursomc.resources;
 
+import com.israelsolha.cursomc.domain.Categoria;
 import com.israelsolha.cursomc.domain.Cliente;
 import com.israelsolha.cursomc.domain.Cliente;
+import com.israelsolha.cursomc.dto.CategoriaDTO;
 import com.israelsolha.cursomc.dto.ClienteDTO;
+import com.israelsolha.cursomc.dto.ClienteNewDTO;
 import com.israelsolha.cursomc.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,13 +33,13 @@ public class ClienteResource {
 
     }
 
-//    @RequestMapping(method = RequestMethod.POST)
-//    public ResponseEntity<Void> insert(@Valid @RequestBody ClienteDTO objDto) {
-//        Cliente obj = service.fromDTO(objDto);
-//        obj = service.insert(obj);
-//        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-//        return ResponseEntity.created(uri).build();
-//    }
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto) {
+        Cliente obj = service.fromDTO(objDto);
+        obj = service.insert(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Void> update(@PathVariable Integer id, @Valid @RequestBody ClienteDTO objDto) {

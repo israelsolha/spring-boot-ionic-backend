@@ -1,6 +1,7 @@
 package com.israelsolha.cursomc.dto;
 
 import com.israelsolha.cursomc.domain.Categoria;
+import com.israelsolha.cursomc.services.validation.ClienteUpdate;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;

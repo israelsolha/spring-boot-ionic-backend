@@ -1,6 +1,8 @@
 package com.israelsolha.cursomc.config;
 
 import com.israelsolha.cursomc.services.DBService;
+import com.israelsolha.cursomc.services.EmailService;
+import com.israelsolha.cursomc.services.SmptEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -26,5 +28,10 @@ public class DevConfig {
         }
         dbService.instantiateTestDatabase();
         return true;
+    }
+
+    @Bean
+    public EmailService emailService() {
+        return new SmptEmailService();
     }
 }
